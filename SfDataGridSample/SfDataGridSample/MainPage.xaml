@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sfgrid="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             xmlns:local="clr-namespace:SfDataGridSample.ViewModel"
+             xmlns:model="clr-namespace:SfDataGridSample.Model"
+             x:Class="SfDataGridSample.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:DealerInfoViewModel x:Name="dealerInfoViewModel" />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <sfgrid:SfDataGrid x:Name="DataGrid" GridLinesVisibility="Both" HeaderGridLinesVisibility="Both"
+                       ItemsSource="{Binding DealerInformation}"
+                       AutoGenerateColumnsMode="None"
+                       SelectionMode="Single"
+                       AllowEditing="True"
+                       ColumnWidthMode="Fill"
+                       HeaderRowHeight="52"
+                       RowHeight="48">
+
+            <sfgrid:SfDataGrid.Columns>
+
+                <sfgrid:DataGridNumericColumn Format="D"
+                                   HeaderText="Product Number"
+                                   MappingName="ProductNo"
+                                   MinimumWidth="200" />
+
+                <sfgrid:DataGridTemplateColumn
+                                   HeaderText="Product ID"
+                                   MappingName="ProductID"
+                                   MinimumWidth="200">
+                    <sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Text="Product ID" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                    <sfgrid:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <Label Text="{Binding ProductID}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.CellTemplate>
+
+                    <sfgrid:DataGridTemplateColumn.EditTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <syncfusion:SfMaskedEntry Mask="[0-9][0-9]:[0-5][0-9]"
+                            MaskType="RegEx"
+                            Placeholder="__:__"
+                            InputTransparent="False"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.EditTemplate>
+                </sfgrid:DataGridTemplateColumn>
+
+                <sfgrid:DataGridTemplateColumn 
+                   HeaderText="Dealer Name"
+                   MappingName="DealerName"
+                   MinimumWidth="200">
+                    <sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Text="Dealer Name" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                    <sfgrid:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <Label Text="{Binding DealerName}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.CellTemplate>
+
+                    <sfgrid:DataGridTemplateColumn.EditTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <syncfusion:SfMaskedEntry Mask="[0-9][0-9]:[0-5][0-9]"
+                            MaskType="RegEx"
+                            Placeholder="__:__"
+                            InputTransparent="False"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.EditTemplate>
+                </sfgrid:DataGridTemplateColumn>
+
+                <sfgrid:DataGridTemplateColumn
+                   HeaderText="Product Price"
+                   MappingName="ProductPrice"
+                   MinimumWidth="200">
+                    <sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Text="Product Price" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                    <sfgrid:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <Label Text="{Binding ProductPrice}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.CellTemplate>
+
+                    <sfgrid:DataGridTemplateColumn.EditTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <syncfusion:SfMaskedEntry Mask="[0-9][0-9]:[0-5][0-9]"
+                            MaskType="RegEx"
+                            Placeholder="__:__"
+                            InputTransparent="False"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.EditTemplate>
+                </sfgrid:DataGridTemplateColumn>
+
+                <sfgrid:DataGridTemplateColumn
+                   HeaderText="Ship City"
+                   MappingName="ShipCity"
+                   MinimumWidth="200">
+                    <sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Text="Ship City" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                    <sfgrid:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <Label Text="{Binding ShipCity}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.CellTemplate>
+
+                    <sfgrid:DataGridTemplateColumn.EditTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <syncfusion:SfMaskedEntry Mask="[0-9][0-9]:[0-5][0-9]"
+                            MaskType="RegEx"
+                            Placeholder="__:__"
+                            InputTransparent="False"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.EditTemplate>
+                </sfgrid:DataGridTemplateColumn>
+
+                <sfgrid:DataGridTextColumn
+               HeaderText="Ship Country"
+               MappingName="ShipCountry"
+               MinimumWidth="200" />
+
+                <sfgrid:DataGridTemplateColumn
+                   HeaderText="Shipped Date"
+                   MappingName="ShippedDate"
+                   MinimumWidth="200">
+                    <sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Text="Shipped Date" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                    <sfgrid:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <Label Text="{Binding ShippedDate, StringFormat='{0:d}'}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.CellTemplate>
+
+                    <sfgrid:DataGridTemplateColumn.EditTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <syncfusion:SfMaskedEntry Mask="[0-9][0-9]:[0-5][0-9]"
+                            MaskType="RegEx"
+                            Placeholder="__:__"
+                            InputTransparent="False"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.EditTemplate>
+                </sfgrid:DataGridTemplateColumn>
+
+
+
+                <sfgrid:DataGridTemplateColumn
+                   HeaderText="Is Online"
+                   MappingName="IsOnline"
+                   MinimumWidth="200">
+                    <sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <Label Text="Is Online" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.HeaderTemplate>
+                    <sfgrid:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <Label Text="{Binding IsOnline}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" Margin="10,0"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.CellTemplate>
+
+                    <sfgrid:DataGridTemplateColumn.EditTemplate>
+                        <DataTemplate x:DataType="model:DealerInfo">
+                            <syncfusion:SfMaskedEntry Mask="[0-9][0-9]:[0-5][0-9]"
+                            MaskType="RegEx"
+                            Placeholder="__:__"
+                            InputTransparent="False"/>
+                        </DataTemplate>
+                    </sfgrid:DataGridTemplateColumn.EditTemplate>
+                </sfgrid:DataGridTemplateColumn>
+
+            </sfgrid:SfDataGrid.Columns>
+        </sfgrid:SfDataGrid>
+    </ContentPage.Content>
+</ContentPage>
